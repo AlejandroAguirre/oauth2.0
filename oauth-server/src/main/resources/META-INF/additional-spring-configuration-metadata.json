@@ -1,0 +1,12 @@
+{"properties": [
+  {
+    "name": "cors.allowed-origin",
+    "type": "java.lang.String",
+    "description": "A description for 'cors.allowed-origin'"
+  },
+  {
+    "name": "oauth.clients.oauth-client.redirect-uri",
+    "type": "java.lang.String",
+    "description": "A description for 'oauth.clients.oauth-client.redirect-uri'"
+  }
+]}

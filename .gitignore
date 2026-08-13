@@ -1,3 +1,5 @@
 oauth-client-angular/.editorconfig
 /oauth-client-angular/.vscode
 oauth-client-angular/package-lock.json
+/oauth-server/.mvn
+/oauth-server/data

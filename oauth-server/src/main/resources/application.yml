@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: ${SPRING_APPLICATION_NAME:oauth-server}
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:none}
+    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    defer-datasource-initialization: ${SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION:true}
+
+  sql:
+    init:
+      mode: ${SPRING_SQL_INIT_MODE:always}
+
+  h2:
+    console:
+      enabled: ${SPRING_H2_CONSOLE_ENABLED:true}
+      path: ${SPRING_H2_CONSOLE_PATH:/h2-console}
+
+server:
+  port: ${SERVER_PORT:9000}
+
+oauth:
+  clients:
+    oauth-client:
+      redirect-uri: ${OAUTH_CLIENT_REDIRECT_URI:http://127.0.0.1:8080/login/oauth2/code/oauth-client}
+      post-logout-redirect-uri: ${OAUTH_CLIENT_POST_LOGOUT_REDIRECT_URI:http://127.0.0.1:8080/logout}
+
+    angular-client:
+      redirect-uri: ${ANGULAR_CLIENT_REDIRECT_URI:http://127.0.0.1:4200/login-callback}
+      post-logout-redirect-uri: ${ANGULAR_CLIENT_POST_LOGOUT_REDIRECT_URI:http://127.0.0.1:4200/logout}
+
+cors:
+  allowed-origin: ${CORS_ALLOWED_ORIGIN:http://127.0.0.1:4200}
+
+logging:
+  level:
+    org.springframework.security: ${LOG_LEVEL_SPRING_SECURITY:DEBUG}
+    # org.springframework.security.oauth2: ${LOG_LEVEL_SPRING_SECURITY_OAUTH2:TRACE}
