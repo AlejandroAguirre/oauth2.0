@@ -3,3 +3,8 @@ oauth-client-angular/.editorconfig
 oauth-client-angular/package-lock.json
 /oauth-server/.mvn
 /oauth-server/data
+oauth-server/mvnw
+oauth-server/mvnw.cmd
+resource-server/mvnw
+/resource-server/.mvn/wrapper
+resource-server/mvnw.cmd

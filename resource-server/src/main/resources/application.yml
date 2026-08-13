@@ -1,0 +1,46 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${OAUTH_ISSUER_URI:http://127.0.0.1:9000}
+          jwk-set-uri: ${OAUTH_JWK_SET_URI:http://127.0.0.1:9000/oauth2/jwks}
+
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1}
+    driver-class-name: ${SPRING_DATASOURCE_DRIVER_CLASS_NAME:org.h2.Driver}
+    username: ${SPRING_DATASOURCE_USERNAME:sa}
+    password: ${SPRING_DATASOURCE_PASSWORD:}
+
+  jpa:
+    hibernate:
+      ddl-auto: ${SPRING_JPA_HIBERNATE_DDL_AUTO:none}
+    show-sql: ${SPRING_JPA_SHOW_SQL:true}
+    defer-datasource-initialization: ${SPRING_JPA_DEFER_DATASOURCE_INITIALIZATION:true}
+
+  sql:
+    init:
+      mode: ${SPRING_SQL_INIT_MODE:always}
+
+  h2:
+    console:
+      enabled: ${SPRING_H2_CONSOLE_ENABLED:true}
+      path: ${SPRING_H2_CONSOLE_PATH:/h2-console}
+
+  cors:
+    allowed-origin: ${SPRING_CORS_ALLOWED_ORIGIN:http://127.0.0.1:4200}
+
+logging:
+  level:
+    org.springframework.security: ${LOG_LEVEL_SPRING_SECURITY:trace}
+
+server:
+  port: ${SERVER_PORT:8081}
+
+resilience4j:
+  ratelimiter:
+    instances:
+      userEndpoint:
+        limit-for-period: ${RATELIMITER_USER_ENDPOINT_LIMIT_FOR_PERIOD:15}
+        limit-refresh-period: ${RATELIMITER_USER_ENDPOINT_LIMIT_REFRESH_PERIOD:1m}
+        timeout-duration: ${RATELIMITER_USER_ENDPOINT_TIMEOUT_DURATION:0}
