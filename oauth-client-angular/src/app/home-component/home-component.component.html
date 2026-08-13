@@ -1,0 +1,28 @@
+<div class="background-glow"></div>
+<main class="client-container">
+    <div class="logo">
+        Angular
+    </div>
+    <h1>Angular OAuth2 Client</h1>
+    <p class="subtitle">
+        Conéctate con tu servidor de autenticación
+    </p>
+    <div class="info-box">
+        <span class="status-dot"></span>
+        <div>
+            <strong>OAuth2 Client</strong>
+            <small>
+                Authorization Server: API Server
+            </small>
+        </div>
+    </div>
+    <button [disabled]="conectando" (click)="login()">
+        Conectarse con API Server
+    </button>
+    <p class="message">
+        {{ mensaje }}
+    </p>
+    <footer class="footer">
+        OAuth2 Client Application
+    </footer>
+</main>

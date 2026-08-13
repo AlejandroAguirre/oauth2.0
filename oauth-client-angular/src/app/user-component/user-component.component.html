@@ -1,0 +1,63 @@
+<main class="client-container user-page">
+  <!-- Encabezado -->
+  <div class="user-header">
+    <!-- Logo -->
+    <div class="logo">
+      Cl
+    </div>
+    <!-- Perfil del usuario -->
+    <div class="user-profile">
+      <div class="user-avatar">
+        <span>
+          {{ user?.usuario?.charAt(0)?.toUpperCase() }}
+        </span>
+      </div>
+      <div class="user-profile-data">
+        <strong>
+          {{ user?.usuario }}
+        </strong>
+        <small>
+          @for (authority of user?.authorities; track authority; let last = $last) {
+            {{ authority }}@if (!last) { · }
+          }
+        </small>
+      </div>
+      <button type="button" class="logout-button" (click)="logout()">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+  <!-- Contenido principal -->
+  <section class="employees-section">
+    <h1>Empleados</h1>
+    <p class="subtitle">
+      Lista de empleados disponibles
+    </p>
+    <!-- Lista de empleados -->
+    <div class="employees-list">
+      @for (empleado of user?.empleados; track empleado) {
+        <div class="employee-item">
+          <div class="employee-info">
+            <strong>
+              {{ empleado.nombre }}
+              {{ empleado.apellidoPaterno }}
+              {{ empleado.apellidoMaterno }}
+            </strong>
+            <small>
+              {{ empleado.puesto }}
+            </small>
+            <small>
+              {{ empleado.fechaNacimiento | date:'dd/MM/yyyy' }}
+            </small>
+          </div>
+        </div>
+      }
+      <!-- Sin empleados -->
+      @if (user && user.empleados.length === 0) {
+        <div class="empty-message">
+          No hay empleados registrados.
+        </div>
+      }
+    </div>
+  </section>
+</main>
