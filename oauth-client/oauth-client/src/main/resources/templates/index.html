@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>OAuth2 Client</title>
+	<link rel="stylesheet" href="/css/client.css">
+</head>
+<body>
+	<div class="background-glow"></div>
+	<main class="client-container">
+		<div class="logo">
+			Cl
+		</div>
+		<h1>App Cliente</h1>
+		<p class="subtitle">
+			Conéctate con tu servidor de autenticación
+		</p>
+		<div class="info-box">
+			<span class="status-dot"></span>
+			<div>
+				<strong>OAuth2 Client</strong>
+				<small>Authorization Server: API Server</small>
+			</div>
+		</div>
+		<button id="connectButton" onclick="conectar()">
+			Conectarse con API Server :)
+		</button>
+		<p id="mensaje" class="message"></p>
+		<footer class="footer">
+			OAuth2 Client Application
+		</footer>
+	</main>
+	<script>
+		function conectar() {
+			const button = document.getElementById("connectButton");
+			const mensaje = document.getElementById("mensaje");
+			button.disabled = true;
+			mensaje.innerText =
+				"Preparando conexión...";
+			setTimeout(() => {
+				mensaje.innerText =
+					"Conectando con API Server Oauth...";
+			}, 2000);
+			setTimeout(() => {
+				mensaje.innerText =
+					"Redirigiendo al Authorization Server...";
+				setTimeout(() => {
+					window.location.href =
+						"/oauth2/authorization/oauth-client";
+				}, 1500);
+			}, 4000);
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Usuario</title>
+	<link rel="stylesheet" href="/css/client.css">
+</head>
+
+<body>
+	<main class="client-container user-page">
+		<!-- Encabezado -->
+		<div class="user-header">
+			<!-- Logo existente -->
+			<div class="logo">
+				Cl
+			</div>
+			<!-- Perfil del usuario -->
+			<div class="user-profile">
+				<div class="user-avatar">
+					<span th:text="${#strings.substring(user.usuario, 0, 1)}">
+						U
+					</span>
+				</div>
+				<div class="user-profile-data">
+					<strong th:text="${user.usuario}">
+						Usuario
+					</strong>
+					<small>
+						<span th:each="authority, stat : ${user.authorities}"
+							th:text="${authority + (!stat.last ? ' · ' : '')}">
+							ROLE_USER
+						</span>
+					</small>
+				</div>
+				<form th:action="@{/logout}" method="post" class="logout-button"
+				      onsubmit="return confirm('¿Estás seguro de que deseas cerrar sesión?');">
+				    <button type="submit">
+				        Cerrar sesión
+				    </button>
+				</form>
+			</div>
+
+		</div>
+		<!-- Contenido principal -->
+		<section class="employees-section">
+			<h1>Empleados</h1>
+			<p class="subtitle">
+				Lista de empleados disponibles
+			</p>
+			<!-- Lista de empleados -->
+			<div class="employees-list">
+				<div class="employee-item" th:each="empleado : ${user.empleados}">
+					<div class="employee-info">
+
+						<strong th:text="${empleado.nombre + ' ' +
+						                      empleado.apellidoPaterno + ' ' +
+						                      empleado.apellidoMaterno}">
+							Nombre Apellidos
+						</strong>
+						<small th:text="${empleado.puesto}">
+							Puesto
+						</small>
+						<small th:text="${#temporals.format(empleado.fechaNacimiento, 'dd/MM/yyyy')}">
+							01/01/1990
+						</small>
+					</div>
+				</div>
+
+				<!-- Sin empleados -->
+				<div class="empty-message" th:if="${#lists.isEmpty(user.empleados)}">
+					No hay empleados registrados.
+				</div>
+			</div>
+		</section>
+	</main>
+</body>
+
+</html>

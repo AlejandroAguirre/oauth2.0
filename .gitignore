@@ -8,3 +8,6 @@ oauth-server/mvnw.cmd
 resource-server/mvnw
 /resource-server/.mvn/wrapper
 resource-server/mvnw.cmd
+/oauth-client/oauth-client/.mvn/wrapper
+oauth-client/oauth-client/mvnw
+oauth-client/oauth-client/mvnw.cmd
